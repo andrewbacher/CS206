@@ -8,7 +8,7 @@ p.setAdditionalSearchPath(pybullet_data.getDataPath())
 p.setGravity(0,0,-9.8)#simulate gravity
 
 planeId = p.loadURDF("plane.urdf")
-p.loadSDF("box.sdf")#loads in a box to the environment
+p.loadSDF("boxes.sdf")#loads in a box to the environment
 
 for i in range(1000):#loop 1000 times
     p.stepSimulation()# increase physics inside simulation a small amount
