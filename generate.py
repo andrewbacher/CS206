@@ -12,7 +12,7 @@ for k in range(4):
     y = y +1
     for j in range(4):
         x = x+1
-        for i in range(9git ):
+        for i in range(9):
             pyrosim.Send_Cube(name="Box", pos=[x, y, z], size=[length, width, height])  # stores box at specified location
             z = z*.9
             z = z+1
