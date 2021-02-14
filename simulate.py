@@ -8,6 +8,7 @@ p.setAdditionalSearchPath(pybullet_data.getDataPath())
 p.setGravity(0,0,-9.8)#simulate gravity
 
 planeId = p.loadURDF("plane.urdf")
+planeId = p.loadURDF("body.urdf")
 p.loadSDF("world.sdf")#loads in a box to the environment
 
 for i in range(1000):#loop 1000 times

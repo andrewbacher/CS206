@@ -1,13 +1,24 @@
 import pyrosim.pyrosim as pyrosim #we dont need to write pyrosim.pyrosim every time we want to use it
-pyrosim.Start_SDF("world.sdf")#names the world box
-#Three variables associated with object size
-length = 1
-width = 1
-height = 1
-#three variables for object position
-x = 0
-y = 0
-z = 0.5
-pyrosim.Send_Cube(name="Box", pos=[x, y, z], size=[length, width, height])  # stores box at specified location
 
-pyrosim.End()#close sdf file
+def Create_World():
+    pyrosim.Start_SDF("world.sdf")  # names the world box
+    # Three variables associated with object size
+    length = 1
+    width = 1
+    height = 1
+    # three variables for object position
+    x = -3
+    y = 0
+    z = 0.5
+    pyrosim.Send_Cube(name="Box", pos=[x, y, z], size=[length, width, height])  # stores box at specified location
+
+    pyrosim.End()  # close sdf file
+def Create_Robot():
+    pyrosim.Start_URDF("body.urdf")#Unified Robot Description Format file stores description of robot body
+    pyrosim.Send_Cube(name="Torso", pos=[0, 0, 0.5], size=[1, 1, 1])  # stores the cube "Torso" at specified location
+    pyrosim.Send_Joint(name="Torso_Leg", parent="Torso", child="Leg", type="revolute", position="0.5 0 1.0")
+    pyrosim.Send_Cube(name="Leg", pos=[0.5, 0, 0.5], size=[1, 1, 1])  # stores the cube "Leg" at specified location
+
+    pyrosim.End()
+Create_World()
+Create_Robot()
