@@ -15,12 +15,14 @@ planeId = p.loadURDF("body.urdf")
 p.loadSDF("world.sdf")#loads in a box to the environment
 pyrosim.Prepare_To_Simulate("body.urdf")
 backLegSensorValues = numpy.zeros(100)
+frontLegSensorValues = numpy.zeros(100)
 
 for i in range(100):#loop 1000 times
     p.stepSimulation()# increase physics inside simulation a small amount
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("Bleg")
-
+    frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("Fleg")
     t.sleep(0.01666666666)# program waits for 1/60 seconds
 p.disconnect()#quits simulation
-numpy.save("data/test.npy",backLegSensorValues)#saves sensor values in a file called test.npy
-print(backLegSensorValues)
+numpy.save("data/backLegSensorValues.npy",backLegSensorValues)#saves sensor values in a file
+numpy.save("data/frontLegSensorValues.npy",frontLegSensorValues)#saves sensor values in a file
+
