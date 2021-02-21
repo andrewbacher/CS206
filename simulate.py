@@ -22,5 +22,5 @@ for i in range(100):#loop 1000 times
 
     t.sleep(0.01666666666)# program waits for 1/60 seconds
 p.disconnect()#quits simulation
-
+numpy.save("data/test.npy",backLegSensorValues)#saves sensor values in a file called test.npy
 print(backLegSensorValues)
