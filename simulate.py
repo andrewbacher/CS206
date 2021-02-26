@@ -3,8 +3,10 @@ import time as t #t.sleep() function
 import pybullet_data
 import pyrosim.pyrosim as pyrosim #we dont need to write pyrosim.pyrosim every time we want to use it
 import numpy
+import math
+import random
 
-
+pi = math.pi
 
 physicsClient = p.connect(p.GUI)# object physicsClient handles physics and draws results to a GUI
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
@@ -17,10 +19,10 @@ p.loadSDF("world.sdf")#loads in a box to the environment
 
 pyrosim.Prepare_To_Simulate("body.urdf")
 
-backLegSensorValues = numpy.zeros(100)
-frontLegSensorValues = numpy.zeros(100)
+backLegSensorValues = numpy.zeros(10000)
+frontLegSensorValues = numpy.zeros(10000)
 
-for i in range(100):#loop 1000 times
+for i in range(10000):#loop 1000 times
     p.stepSimulation()# increase physics inside simulation a small amount
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("Bleg")
     frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("Fleg")
@@ -33,9 +35,10 @@ for i in range(100):#loop 1000 times
 
         controlMode=p.POSITION_CONTROL,
 
-        targetPosition=0.0,
+        targetPosition=-(random.uniform(-pi/2,pi/2)),
 
-        maxForce=500)
+        maxForce=30)
+    pyrosim.Set_Motor_For_Joint(bodyIndex=robot, jointName="Torso_Fleg", controlMode=p.POSITION_CONTROL, targetPosition=random.uniform(-pi/2,pi/2), maxForce=30)
 
     t.sleep(0.01666666666)# program waits for 1/60 seconds
 p.disconnect()#quits simulation
