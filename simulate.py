@@ -21,14 +21,30 @@ pyrosim.Prepare_To_Simulate("body.urdf")
 
 backLegSensorValues = numpy.zeros(10000)
 frontLegSensorValues = numpy.zeros(10000)
-#targetAngles = numpy.zeros(10000)
+#targetAngles = []
 
-targetAngles = (numpy.sin(numpy.linspace(-pi, pi, num = 1000)))
+frontTargetAngles = (numpy.sin(numpy.linspace(-pi, pi, num = 10000)))
+backTargetAngles = numpy.zeros((10000))
 
-numpy.save("data/targetAngles.npy",targetAngles)
-#exit()
 
-for i in range(1000):#loop 1000 times
+frontAmplitude = pi/4
+frontFrequency = 5
+frontPhaseOffset = 0
+
+backAmplitude = pi
+backFrequency =5
+backPhaseOffset = pi
+
+for i in range(10000):
+    f = -frontAmplitude*numpy.sin(frontFrequency/160 * (i + frontPhaseOffset))
+    b = backAmplitude*numpy.sin(backFrequency/160 *(i +backPhaseOffset))
+    frontTargetAngles[i] = f
+    backTargetAngles[i] = b
+numpy.save("data/backAngles.npy",backTargetAngles)#saves sensor values in a file
+numpy.save("data/frontAngles.npy",frontTargetAngles)#saves sensor values in a file
+
+for i in range(10000):#loop 1000 times
+
     p.stepSimulation()# increase physics inside simulation a small amount
     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("Bleg")
     frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("Fleg")
@@ -41,10 +57,10 @@ for i in range(1000):#loop 1000 times
 
         controlMode=p.POSITION_CONTROL,
 
-        targetPosition=targetAngles[i],
+        targetPosition=backTargetAngles[i],
 
         maxForce=30)
-    pyrosim.Set_Motor_For_Joint(bodyIndex=robot, jointName="Torso_Fleg", controlMode=p.POSITION_CONTROL, targetPosition=targetAngles[i], maxForce=30)
+    pyrosim.Set_Motor_For_Joint(bodyIndex=robot, jointName="Torso_Fleg", controlMode=p.POSITION_CONTROL, targetPosition=frontTargetAngles[i], maxForce=30)
 
     t.sleep(1/60)# program waits for 1/60 seconds
 p.disconnect()#quits simulation
