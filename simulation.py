@@ -11,6 +11,7 @@ class SIMULATION:
         self.physicsClient = p.connect(p.GUI)  # object physicsClient handles physics and draws results to a GUI
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(c.zero,c.zero,-c.g)#simulate gravity
+        pyrosim.linkNamesToIndicies
 
         self.world = WORLD()
         self.robot = ROBOT()
