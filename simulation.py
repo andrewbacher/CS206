@@ -14,3 +14,25 @@ class SIMULATION:
 
         self.world = WORLD()
         self.robot = ROBOT()
+    def Run(self):
+
+        for i in range(c.numSteps):#loop 1000 times
+            print(i)
+            p.stepSimulation()# increase physics inside simulation a small amount
+            # backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("Bleg")
+            # frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("Fleg")
+            #
+            # pyrosim.Set_Motor_For_Joint(
+            #
+            #     bodyIndex=robot,
+            #
+            #     jointName="Torso_Bleg",
+            #
+            #     controlMode=p.POSITION_CONTROL,
+            #
+            #     targetPosition=backTargetAngles[i],
+            #
+            #     maxForce=c.maxForce)
+            # pyrosim.Set_Motor_For_Joint(bodyIndex=robot, jointName="Torso_Fleg", controlMode=p.POSITION_CONTROL, targetPosition=frontTargetAngles[i], maxForce=c.maxForce)
+            #
+            t.sleep(c.sleep)# program waits for 1/60 seconds

@@ -68,4 +68,6 @@
 # numpy.save("data/frontLegSensorValues.npy",frontLegSensorValues)#saves sensor values in a file
 #
 from simulation import SIMULATION
+
 simulation = SIMULATION()
+simulation.Run()
