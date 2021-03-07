@@ -62,7 +62,7 @@ for i in range(10000):#loop 1000 times
         maxForce=30)
     pyrosim.Set_Motor_For_Joint(bodyIndex=robot, jointName="Torso_Fleg", controlMode=p.POSITION_CONTROL, targetPosition=frontTargetAngles[i], maxForce=30)
 
-    t.sleep(1/60)# program waits for 1/60 seconds
+    t.sleep(1/100)# program waits for 1/60 seconds
 p.disconnect()#quits simulation
 numpy.save("data/backLegSensorValues.npy",backLegSensorValues)#saves sensor values in a file
 numpy.save("data/frontLegSensorValues.npy",frontLegSensorValues)#saves sensor values in a file
