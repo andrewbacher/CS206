@@ -9,8 +9,8 @@ sleep = 1/60
 maxForce = 30
 
 frontAmp = pi/4
-backAmp = pi
-backFreq = 5
+backAmp = pi/4
+backFreq = 1
 frontFreq = 5
 frontOff = 0
-backOff = pi
+backOff = 0

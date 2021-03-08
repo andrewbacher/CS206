@@ -21,7 +21,8 @@ class SIMULATION:
             print(i)
 
             p.stepSimulation()# increase physics inside simulation a small amount
-            self.robot.sense(i)
+            self.robot.Sense(i)
+            self.robot.Act()
 
             #
             # pyrosim.Set_Motor_For_Joint(
@@ -35,8 +36,8 @@ class SIMULATION:
             #     targetPosition=backTargetAngles[i],
             #
             #     maxForce=c.maxForce)
-            # pyrosim.Set_Motor_For_Joint(bodyIndex=robot, jointName="Torso_Fleg", controlMode=p.POSITION_CONTROL, targetPosition=frontTargetAngles[i], maxForce=c.maxForce)
+
             #
-            #t.sleep(c.sleep)# program waits for 1/60 seconds
+            t.sleep(c.sleep)# program waits for 1/60 seconds
     def __del__(self):
         p.disconnect()
