@@ -14,13 +14,15 @@ class SIMULATION:
 
         self.world = WORLD()
         self.robot = ROBOT()
+
     def Run(self):
 
         for i in range(c.numSteps):#loop 1000 times
             print(i)
+
             p.stepSimulation()# increase physics inside simulation a small amount
-            # backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("Bleg")
-            # frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("Fleg")
+            self.robot.sense(i)
+
             #
             # pyrosim.Set_Motor_For_Joint(
             #
