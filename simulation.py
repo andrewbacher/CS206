@@ -11,7 +11,6 @@ class SIMULATION:
         self.physicsClient = p.connect(p.GUI)  # object physicsClient handles physics and draws results to a GUI
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(c.zero,c.zero,-c.g)#simulate gravity
-        pyrosim.linkNamesToIndicies
 
         self.world = WORLD()
         self.robot = ROBOT()
@@ -36,6 +35,6 @@ class SIMULATION:
             #     maxForce=c.maxForce)
             # pyrosim.Set_Motor_For_Joint(bodyIndex=robot, jointName="Torso_Fleg", controlMode=p.POSITION_CONTROL, targetPosition=frontTargetAngles[i], maxForce=c.maxForce)
             #
-            t.sleep(c.sleep)# program waits for 1/60 seconds
+            #t.sleep(c.sleep)# program waits for 1/60 seconds
     def __del__(self):
         p.disconnect()

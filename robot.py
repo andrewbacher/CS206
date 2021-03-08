@@ -1,4 +1,5 @@
 import simulation
+from sensor import SENSOR
 class ROBOT:
     def __init__(self):
 
@@ -8,5 +9,8 @@ class ROBOT:
         self.Prepare_To_Sense()
     def Prepare_To_Sense(self):
         self.sensors = {}
-        for LinkName in simulation.pyrosim.linkNamesToIndices:
-            print(LinkName)
+       # for LinkName in simulation.pyrosim.linkNamesToIndices:
+        #    print(LinkName)
+        self.sensors["Torso"] = SENSOR("Torso")
+        self.sensors["Bleg"] = SENSOR("Bleg")
+        self.sensors["Fleg"] = SENSOR("Fleg")
