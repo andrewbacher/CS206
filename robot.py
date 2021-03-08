@@ -2,6 +2,7 @@ import simulation
 from sensor import SENSOR
 from motor import MOTOR
 import pyrosim.pyrosim as pyrosim
+import numpy
 class ROBOT:
     def __init__(self):
         self.robot = simulation.p.loadURDF("body.urdf")
@@ -29,6 +30,12 @@ class ROBOT:
         #self.motors["Torso_Bleg"] = MOTOR("Torso_Bleg")
         #self.motors["Torso_Fleg"] = MOTOR("Torso_Fleg")
 
-    def Act(self):
+    def Act(self, t):
         for key, value in self.motors.items():
-            value.Set_Value(self.robot)
+            value.Set_Value(self.robot, t)
+
+    def Save_Values(self):
+        for key, value in self.motors.items():
+            numpy.save("data/Angles.npy", value.Motor_Values)  # saves sensor values in a f
+        for key, value in self.sensors.items():
+            numpy.save("data/SensorValues.npy",value.values)#saves sensor values in a file

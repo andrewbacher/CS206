@@ -18,11 +18,10 @@ class SIMULATION:
     def Run(self):
 
         for i in range(c.numSteps):#loop 1000 times
-            print(i)
 
             p.stepSimulation()# increase physics inside simulation a small amount
             self.robot.Sense(i)
-            self.robot.Act()
+            self.robot.Act(i)
 
             #
             # pyrosim.Set_Motor_For_Joint(
@@ -38,6 +37,6 @@ class SIMULATION:
             #     maxForce=c.maxForce)
 
             #
-            t.sleep(c.sleep)# program waits for 1/60 seconds
+            #t.sleep(c.sleep)# program waits for 1/60 seconds
     def __del__(self):
         p.disconnect()
