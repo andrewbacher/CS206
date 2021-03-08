@@ -9,10 +9,14 @@ class MOTOR:
         self.Prepare_to_Act()
     def Prepare_to_Act(self):
         self.Motor_Values = numpy.zeros(c.numSteps)
-
-        self.amplitude = c.backAmp
-        self.frequency = c.backFreq
-        self.offset = c.backOff
+        if(self.jointName == "Torso_Bleg"):
+            self.amplitude = c.backAmp
+            self.frequency = c.backFreq
+            self.offset = c.backOff
+        else:
+            self.amplitude = c.frontAmp
+            self.frequency = c.frontFreq
+            self.offset = c.frontOff
         for i in range(c.numSteps):
             self.Motor_Values[i] = -self.amplitude*numpy.sin(self.frequency/160 * (i + self.offset))
 
