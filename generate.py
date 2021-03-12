@@ -30,4 +30,10 @@ def Generate_Body():
     pyrosim.Send_Cube(name="Bleg", pos=[-0.5, 0, -0.5], size=[1, 1, 1])  # stores the cube "Bleg" at specified location
     pyrosim.Send_Joint(name="Torso_Fleg", parent="Torso", child="Fleg", type="revolute", position="2 0 1")
     pyrosim.Send_Cube(name="Fleg", pos=[0.5, 0, -0.5], size=[1, 1, 1])  # stores the cube "Fleg" at specified location
+
+def Generate_Brain():
+    pyrosim.Start_NeuralNetwork("brain.nndf")
+    pyrosim.Send_Sensor_Neuron(name=0, linkName="Torso")
+
 Generate_Body()
+Generate_Brain()
