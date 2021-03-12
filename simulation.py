@@ -21,10 +21,12 @@ class SIMULATION:
 
             p.stepSimulation()# increase physics inside simulation a small amount
             self.robot.Sense(i)
+            self.robot.Think()
             self.robot.Act(i)
             #t.sleep(c.sleep)# program waits for 1/60 seconds
     def __del__(self):
-        p.disconnect()
+
         self.robot.Save_Values()
         for key,value in self.robot.sensors.items():
-            value.Save_Values
+            value.Save_Values()
+        p.disconnect()

@@ -32,3 +32,6 @@ class ROBOT:
     def Save_Values(self):
         for key, value in self.motors.items():
             numpy.save("data/Angles.npy", value.Motor_Values)  # saves sensor values in a f
+
+    def Think(self):
+        pass
