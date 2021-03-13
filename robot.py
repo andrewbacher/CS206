@@ -36,4 +36,5 @@ class ROBOT:
             numpy.save("data/Angles.npy", value.Motor_Values)  # saves sensor values in a f
 
     def Think(self):
+        self.nn.Update()
         self.nn.Print()

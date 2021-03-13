@@ -27,6 +27,9 @@ class NEURAL_NETWORK:
         self.Print_Motor_Neuron_Values()
 
         print("")
+    def Update(self):
+        for key, value in self.neurons.items():
+            print(value.Get_Name())
 
 # ---------------- Private methods --------------------------------------
 
