@@ -3,10 +3,12 @@ from sensor import SENSOR
 from motor import MOTOR
 import pyrosim.pyrosim as pyrosim
 import numpy
+from pyrosim.neuralNetwork import NEURAL_NETWORK
 class ROBOT:
     def __init__(self):
         self.robot = simulation.p.loadURDF("body.urdf")
         pyrosim.Prepare_To_Simulate("body.urdf")
+        self.nn = NEURAL_NETWORK("brain.nndf")
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
 
@@ -34,4 +36,4 @@ class ROBOT:
             numpy.save("data/Angles.npy", value.Motor_Values)  # saves sensor values in a f
 
     def Think(self):
-        pass
+        self.nn.Print()
