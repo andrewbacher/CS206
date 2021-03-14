@@ -28,6 +28,8 @@ def Generate_Brain():
     pyrosim.Send_Sensor_Neuron(name=0, linkName="Torso")
     pyrosim.Send_Sensor_Neuron(name=1, linkName="Bleg")
     pyrosim.Send_Sensor_Neuron(name=2, linkName="Fleg")
+    pyrosim.Send_Motor_Neuron(name = 3, jointName="Torso_Bleg")
+    pyrosim.Send_Motor_Neuron(name=4, jointName="Torso_Fleg")
     pyrosim.End()
 
 Create_World()
