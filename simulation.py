@@ -26,7 +26,7 @@ class SIMULATION:
             t.sleep(c.sleep)# program waits for 1/60 seconds
     def __del__(self):
 
-        self.robot.Save_Values()
+#        self.robot.Save_Values()
         for key,value in self.robot.sensors.items():
             value.Save_Values()
         p.disconnect()
