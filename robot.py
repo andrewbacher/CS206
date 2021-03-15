@@ -32,11 +32,10 @@ class ROBOT:
             if self.nn.Is_Motor_Neuron(neuornName):
                 jointName = self.nn.Get_Motor_Neurons_Joint(neuornName)
                 desiredAngle = self.nn.Get_Value_Of(neuornName)
+                for key, value in self.motors.items():
+                    value.Set_Value(self.robot, desiredAngle)
                 print(neuornName+ ' '+jointName+' ')
                 print(desiredAngle)
-
-        for key, value in self.motors.items():
-            value.Set_Value(self.robot, t)
 
     def Save_Values(self):
         for key, value in self.motors.items():
