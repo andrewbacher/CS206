@@ -6,7 +6,7 @@ class MOTOR:
     def __init__(self, jointName):
         self.jointName = jointName
 
-        #self.Prepare_to_Act()
+    #     self.Prepare_to_Act()
     # def Prepare_to_Act(self):
     #     self.Motor_Values = numpy.zeros(c.numSteps)
     #     if(self.jointName == "Torso_Bleg"):

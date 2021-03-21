@@ -58,6 +58,7 @@ class NEURAL_NETWORK:
 
 
 
+
 # ---------------- Private methods --------------------------------------
 
     def Add_Neuron_According_To(self,line):
