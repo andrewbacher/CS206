@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc2e6c01-7262-4832-accf-67ae5057199e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/SensorValues.npy" afterPath="$PROJECT_DIR$/data/SensorValues.npy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generate.py" afterPath="$PROJECT_DIR$/generate.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/brain.nndf" afterPath="$PROJECT_DIR$/brain.nndf" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -111,7 +112,7 @@
       <file leaf-file-name="generate.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/generate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
+            <state relative-caret-position="465">
               <caret line="42" column="28" lean-forward="false" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
               <folding>
                 <element signature="e#0#101#0" expanded="true" />
@@ -170,7 +171,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="952" />
+    <option name="x" value="438" />
+    <option name="y" value="-16" />
     <option name="width" value="976" />
     <option name="height" value="1038" />
   </component>
@@ -321,8 +323,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.search" />
-        <item index="1" class="java.lang.String" itemvalue="Python.simulate" />
-        <item index="2" class="java.lang.String" itemvalue="Python.generate" />
+        <item index="1" class="java.lang.String" itemvalue="Python.generate" />
+        <item index="2" class="java.lang.String" itemvalue="Python.simulate" />
         <item index="3" class="java.lang.String" itemvalue="Python.analyze" />
         <item index="4" class="java.lang.String" itemvalue="Python.songs" />
       </list>
@@ -754,7 +756,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/generate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
+        <state relative-caret-position="465">
           <caret line="42" column="28" lean-forward="false" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
           <folding>
             <element signature="e#0#101#0" expanded="true" />
