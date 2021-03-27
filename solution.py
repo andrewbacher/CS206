@@ -1,6 +1,7 @@
 import numpy
 import pyrosim.pyrosim as pyrosim
-import random
+import os
+
 class SOLUTION:
     def __init__(self):
         self.solution = {}
@@ -11,6 +12,7 @@ class SOLUTION:
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
+        os.system("py simulate.py")
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")  # names the world box
