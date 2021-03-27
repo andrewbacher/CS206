@@ -14,3 +14,5 @@ backFreq = 4
 frontFreq = 2
 frontOff = 0
 backOff = 0
+
+numberOfGenerations = 2

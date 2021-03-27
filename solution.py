@@ -13,6 +13,8 @@ class SOLUTION:
         self.Create_Body()
         self.Create_Brain()
         os.system("py simulate.py")
+        f = open("fitness.txt","r")
+        self.fitness = float(f.read())
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")  # names the world box
