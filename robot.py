@@ -2,11 +2,12 @@ import simulation
 from sensor import SENSOR
 from motor import MOTOR
 import pyrosim.pyrosim as pyrosim
+import pybullet as p
 import numpy
 from pyrosim.neuralNetwork import NEURAL_NETWORK
 class ROBOT:
     def __init__(self):
-        self.robot = simulation.p.loadURDF("body.urdf")
+        self.robot = p.loadURDF("body.urdf")
         pyrosim.Prepare_To_Simulate("body.urdf")
         self.nn = NEURAL_NETWORK("brain.nndf")
         self.Prepare_To_Sense()
@@ -37,10 +38,16 @@ class ROBOT:
                 print(desiredAngle)
 
 
-    # def Save_Values(self):
-    #     for key, value in self.motors.items():
-    #         numpy.save("data/Angles.npy", value.Motor_Values)  # saves sensor values in a f
-
     def Think(self):
         self.nn.Update()
         self.nn.Print()
+
+    def Get_Fitness(self):
+        stateOfLinkZero = p.getLinkState(self.robot, 0)
+        positionOfLinkZero = stateOfLinkZero[0]
+        print(positionOfLinkZero)
+        xCoordinateOfLinkZero = positionOfLinkZero[0]
+        print(xCoordinateOfLinkZero)
+        f = open("fitness.txt","w")
+        f.write(str(xCoordinateOfLinkZero))
+        exit()

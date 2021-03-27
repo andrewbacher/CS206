@@ -23,7 +23,12 @@ class SIMULATION:
             self.robot.Sense(i)
             self.robot.Think()
             self.robot.Act(i)
-            t.sleep(c.sleep)# program waits for 1/60 seconds
+            #t.sleep(c.sleep)# program waits for 1/60 seconds
+
+    def Get_Fitness(self):
+
+        self.robot.Get_Fitness()
+
     def __del__(self):
 
 #        self.robot.Save_Values()
