@@ -7,8 +7,11 @@ import pyrosim.pyrosim as pyrosim #we dont need to write pyrosim.pyrosim every t
 import numpy
 import constants as c
 class SIMULATION:
-    def __init__(self):
-        self.physicsClient = p.connect(p.GUI)  # object physicsClient handles physics and draws results to a GUI
+    def __init__(self, directOrGUI):
+        if(directOrGUI == "DIRECT"):
+            self.physicsClient = p.connect(p.DIRECT)  # blind mode
+        else:
+            self.physicsClient = p.connect(p.GUI)  # object physicsClient handles physics and draws results to a GUI
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(c.zero,c.zero,-c.g)#simulate gravity
 
@@ -32,6 +35,6 @@ class SIMULATION:
     def __del__(self):
 
 #        self.robot.Save_Values()
-        for key,value in self.robot.sensors.items():
-            value.Save_Values()
+        #for key,value in self.robot.sensors.items():
+           # value.Save_Values()
         p.disconnect()

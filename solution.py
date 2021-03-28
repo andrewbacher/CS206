@@ -9,26 +9,17 @@ class SOLUTION:
         self.weights = numpy.random.rand(3,2)
         self.weights * 2 - 1
 
-    def Evaluate(self):
+    def Evaluate(self, directOrGUI):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        os.system("py simulate.py")
+        call = "py simulate.py " + directOrGUI
+        os.system(call)
         f = open("fitness.txt","r")
         self.fitness = float(f.read())
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")  # names the world box
-        # Three variables associated with object size
-        length = 1
-        width = 1
-        height = 1
-        # three variables for object position
-        x = -3
-        y = 0
-        z = 0.5
-        pyrosim.Send_Cube(name="Box", pos=[x, y, z], size=[length, width, height])  # stores box at specified location
-
         pyrosim.End()  # close sdf file
 
     def Create_Body(self):

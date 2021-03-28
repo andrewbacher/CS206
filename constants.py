@@ -15,4 +15,4 @@ frontFreq = 2
 frontOff = 0
 backOff = 0
 
-numberOfGenerations = 2
+numberOfGenerations = 10
