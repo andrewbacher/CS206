@@ -8,6 +8,7 @@ import numpy
 import constants as c
 class SIMULATION:
     def __init__(self, directOrGUI):
+        self.directOrGUI = directOrGUI
         if(directOrGUI == "DIRECT"):
             self.physicsClient = p.connect(p.DIRECT)  # blind mode
         else:
@@ -26,7 +27,9 @@ class SIMULATION:
             self.robot.Sense(i)
             self.robot.Think()
             self.robot.Act(i)
-            #t.sleep(c.sleep)# program waits for 1/60 seconds
+            if(self.directOrGUI == "GUI"):
+                pass
+                #t.sleep(c.sleep)# program waits for 1/60 seconds
 
     def Get_Fitness(self):
 

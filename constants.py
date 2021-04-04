@@ -16,3 +16,5 @@ frontOff = 0
 backOff = 0
 
 numberOfGenerations = 10
+
+populationSize = 2
