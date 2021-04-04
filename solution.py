@@ -13,7 +13,7 @@ class SOLUTION:
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        call = "py simulate.py " + directOrGUI
+        call = "start /B py simulate.py " + directOrGUI
         os.system(call)
         f = open("fitness.txt","r")
         self.fitness = float(f.read())
