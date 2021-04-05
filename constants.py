@@ -5,7 +5,7 @@ zero = 0
 g = 9.8
 
 numSteps = 10000
-sleep = 1/600
+sleep = 0
 maxForce = 30
 
 frontAmp = pi/4

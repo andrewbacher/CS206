@@ -31,9 +31,9 @@ class SIMULATION:
 
                 t.sleep(c.sleep)# program waits for 1/60 seconds
 
-    def Get_Fitness(self):
+    def Get_Fitness(self,solutionID):
 
-        self.robot.Get_Fitness()
+        self.robot.Get_Fitness(solutionID)
 
     def __del__(self):
 

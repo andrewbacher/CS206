@@ -14,7 +14,7 @@ class ROBOT:
         self.nn = NEURAL_NETWORK("brain"+str(solutionID)+".nndf")
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
-        os.remove("brain"+str(solutionID)+".nndf")
+       # os.remove("brain"+str(solutionID)+".nndf")
 
     def Prepare_To_Sense(self):
         self.sensors = {}
@@ -45,12 +45,18 @@ class ROBOT:
         self.nn.Update()
        # self.nn.Print()
 
-    def Get_Fitness(self):
+    def Get_Fitness(self, solutionID):
         stateOfLinkZero = p.getLinkState(self.robot, 0)
         positionOfLinkZero = stateOfLinkZero[0]
         print(positionOfLinkZero)
         xCoordinateOfLinkZero = positionOfLinkZero[0]
         print(xCoordinateOfLinkZero)
-        f = open("fitness.txt","w")
+
+
+        f = open("fitness"+str(solutionID)+".txt","w")
+
+        #f = open("tmp" + str(solutionID) + ".txt", "w")
         f.write(str(xCoordinateOfLinkZero))
+        #os.rename("tmp"+str(solutionID)+".txt" , "fitness"+str(solutionID)+".txt")
+        #os.system("rename tmp"+str(solutionID)+".txt fitness"+str(solutionID)+".txt")
         exit()
