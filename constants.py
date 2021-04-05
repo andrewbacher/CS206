@@ -5,7 +5,7 @@ zero = 0
 g = 9.8
 
 numSteps = 10000
-sleep = 0
+sleep = 1/600
 maxForce = 30
 
 frontAmp = pi/4
@@ -17,4 +17,4 @@ backOff = 0
 
 numberOfGenerations = 10
 
-populationSize = 2
+populationSize = 10

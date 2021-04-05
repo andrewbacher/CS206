@@ -11,20 +11,41 @@ class SOLUTION:
         self.weights * 2 - 1
         self.myID = id
 
-    def Evaluate(self, directOrGUI):
+    def Start_Simulation(self,directOrGUI):
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
-        call = "start /B py simulate.py " + directOrGUI + " " +str(self.myID)
-        print(call)
+        call = "start /B py simulate.py " + directOrGUI + " " + str(self.myID)
+       # print(call)
         os.system(call)
-        fitnessFileName = "fitness"+str(self.myID)+".txt"
-        while not os.path.exists(fitnessFileName):
 
+    def Wait_For_Simulation_To_End(self):
+        fitnessFileName = "fitness" + str(self.myID) + ".txt"
+        while not os.path.exists(fitnessFileName):
             time.sleep(0.01)
-        f = open("fitness"+str(self.myID)+".txt","r")
+
+        os.system("CACLS fitness" + str(self.myID) + ".txt /e /p SYSTEM:r")
+        f = open("fitness" + str(self.myID) + ".txt", "r")
         self.fitness = float(f.read())
-        print(self.fitness)
+        f.close()
+        #print(self.fitness)
+        os.system("del fitness" + str(self.myID) + ".txt")
+
+    def Evaluate(self, directOrGUI):
+        pass
+       # self.Create_World()
+       # self.Create_Body()
+       # self.Create_Brain()
+       # call = "start /B py simulate.py " + directOrGUI + " " +str(self.myID)
+       # print(call)
+       #os.system(call)
+       # fitnessFileName = "fitness"+str(self.myID)+".txt"
+       # while not os.path.exists(fitnessFileName):
+
+        #    time.sleep(0.01)
+        #f = open("fitness"+str(self.myID)+".txt","r")
+        #self.fitness = float(f.read())
+        #print(self.fitness)
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")  # names the world box
