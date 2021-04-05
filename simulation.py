@@ -7,7 +7,7 @@ import pyrosim.pyrosim as pyrosim #we dont need to write pyrosim.pyrosim every t
 import numpy
 import constants as c
 class SIMULATION:
-    def __init__(self, directOrGUI):
+    def __init__(self, directOrGUI, solutionId):
         self.directOrGUI = directOrGUI
         if(directOrGUI == "DIRECT"):
             self.physicsClient = p.connect(p.DIRECT)  # blind mode
@@ -17,7 +17,7 @@ class SIMULATION:
         p.setGravity(c.zero,c.zero,-c.g)#simulate gravity
 
         self.world = WORLD()
-        self.robot = ROBOT()
+        self.robot = ROBOT(solutionId)
 
     def Run(self):
 
@@ -28,8 +28,8 @@ class SIMULATION:
             self.robot.Think()
             self.robot.Act(i)
             if(self.directOrGUI == "GUI"):
-                pass
-                #t.sleep(c.sleep)# program waits for 1/60 seconds
+
+                t.sleep(c.sleep)# program waits for 1/60 seconds
 
     def Get_Fitness(self):
 
