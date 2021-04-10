@@ -57,8 +57,8 @@ class SOLUTION:
         pyrosim.Send_Cube(name="Torso", pos=[0, 0, 1],size=[1, 1, 1])  # stores the cube "Torso" at specified location
         pyrosim.Send_Joint(name="Torso_Bleg", parent="Torso", child="Bleg", type="revolute", position="1 0 1")
         pyrosim.Send_Cube(name="Bleg", pos=[-0.5, 0, -0.5],size=[1, 1, 1])  # stores the cube "Bleg" at specified location
-        pyrosim.Send_Joint(name="Torso_Fleg", parent="Torso", child="Fleg", type="revolute", position="2 0 1")
-        pyrosim.Send_Cube(name="Fleg", pos=[0.5, 0, -0.5],size=[1, 1, 1])  # stores the cube "Fleg" at specified location
+        pyrosim.Send_Joint(name="Torso_Fleg", parent="Torso", child="Fleg", type="revolute", position="0 0.5 1")
+        pyrosim.Send_Cube(name="Fleg", pos=[0, 0.5, 0],size=[0.2, 1, 0.2])  # stores the cube "Fleg" at specified location
         pyrosim.End()
 
     def Create_Brain(self):
