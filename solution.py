@@ -3,11 +3,12 @@ import pyrosim.pyrosim as pyrosim
 import os
 import random
 import time
+import constants as c
 
 class SOLUTION:
     def __init__(self, id):
         self.solution = {}
-        self.weights = numpy.random.rand(3,2)
+        self.weights = numpy.random.rand(c.numSensorNeurons,c.numMotorNeurons)
         self.weights * 2 - 1
         self.myID = id
 
@@ -53,7 +54,7 @@ class SOLUTION:
 
     def Create_Body(self):
         pyrosim.Start_URDF("body.urdf")  # Unified Robot Description Format file stores description of robot body
-        pyrosim.Send_Cube(name="Torso", pos=[1.5, 0, 1.5],size=[1, 1, 1])  # stores the cube "Torso" at specified location
+        pyrosim.Send_Cube(name="Torso", pos=[0, 0, 1],size=[1, 1, 1])  # stores the cube "Torso" at specified location
         pyrosim.Send_Joint(name="Torso_Bleg", parent="Torso", child="Bleg", type="revolute", position="1 0 1")
         pyrosim.Send_Cube(name="Bleg", pos=[-0.5, 0, -0.5],size=[1, 1, 1])  # stores the cube "Bleg" at specified location
         pyrosim.Send_Joint(name="Torso_Fleg", parent="Torso", child="Fleg", type="revolute", position="2 0 1")
@@ -75,14 +76,15 @@ class SOLUTION:
 
         # pyrosim.Send_Synapse(sourceNeuronName=2, targetNeuronName=4, weight=1.0)
         # pyrosim.Send_Synapse(sourceNeuronName=0, targetNeuronName=4, weight=1.0)
-        for currentRow in range(3):
-            for currentColumn in range(2):
+        for currentRow in range(c.numSensorNeurons):
+            for currentColumn in range(c.numMotorNeurons):
                 pyrosim.Send_Synapse(sourceNeuronName=currentRow, targetNeuronName=currentColumn+3, weight=self.weights[currentRow][currentColumn])
         pyrosim.End()
 
+
     def Mutate(self):
-        row = random.randint(0,2)
-        col = row = random.randint(0,1)
+        row = random.randint(0,c.numSensorNeurons-1)
+        col = row = random.randint(0,c.numMotorNeurons-1)
 
         self.weights[row][col] = random.random() * 2 - 1
 
