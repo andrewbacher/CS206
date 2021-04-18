@@ -8,7 +8,7 @@ import constants as c
 class SOLUTION:
     def __init__(self, id):
         self.solution = {}
-        self.weights = numpy.random.rand(c.numSensorNeurons,c.numMotorNeurons)
+        self.weights = numpy.random.rand(c.numSensorNeurons,c.numMotorNeurons) *numpy.random.rand()
         self.weights * 2 - 1
         self.myID = id
 
@@ -116,6 +116,7 @@ class SOLUTION:
         pyrosim.Send_Motor_Neuron(name=14, jointName="Fleg_FrontLowerLeg")
         pyrosim.Send_Motor_Neuron(name=15, jointName="Lleg_LeftLowerLeg")
         pyrosim.Send_Motor_Neuron(name=16, jointName="Rleg_RightLowerLeg")
+
         # pyrosim.Send_Synapse(sourceNeuronName= 0, targetNeuronName= 3, weight= 1.0)
         # pyrosim.Send_Synapse(sourceNeuronName=1, targetNeuronName=3, weight=1.0)
 
