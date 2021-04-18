@@ -61,9 +61,11 @@ class SOLUTION:
         pyrosim.Send_Cube(name="Fleg", pos=[0, 0.5, 0],size=[0.2, 1, 0.2])  # stores the cube "Fleg" at specified location
 
         pyrosim.Send_Joint(name="Torso_Lleg", parent="Torso", child="Lleg", type="revolute", position="-0.5 0 1",jointAxis="0 1 0")
+
         pyrosim.Send_Cube(name="Lleg", pos=[-0.5, 0, 0],size=[1.0, 0.2, 0.2])
 
         pyrosim.Send_Joint(name="Torso_Rleg", parent="Torso", child="Rleg", type="revolute", position="0.5 0 1",jointAxis="0 1 0")
+
         pyrosim.Send_Cube(name="Rleg", pos=[0.5, 0, 0], size=[1.0, 0.2, 0.2])
 
         pyrosim.Send_Joint(name="Fleg_FrontLowerLeg", parent="Fleg", child="FrontLowerLeg", type="revolute", position="0 1 0",jointAxis="1 0 0")
@@ -92,8 +94,21 @@ class SOLUTION:
         pyrosim.Send_Sensor_Neuron(name=7, linkName="LeftLowerLeg")
         pyrosim.Send_Sensor_Neuron(name=8, linkName="RightLowerLeg")
 
+        # pyrosim.Send_Sensor_Neuron(name=0, linkName="BackLowerLeg")
+        # pyrosim.Send_Sensor_Neuron(name=1, linkName="FrontLowerLeg")
+        # pyrosim.Send_Sensor_Neuron(name=2, linkName="LeftLowerLeg")
+        # pyrosim.Send_Sensor_Neuron(name=3, linkName="RightLowerLeg")
+        #
+        # pyrosim.Send_Motor_Neuron(name=4, jointName="Torso_Bleg")
+        # pyrosim.Send_Motor_Neuron(name=5, jointName="Torso_Fleg")
+        # pyrosim.Send_Motor_Neuron(name=6, jointName="Torso_Lleg")
+        # pyrosim.Send_Motor_Neuron(name=7, jointName="Torso_Rleg")
+        # pyrosim.Send_Motor_Neuron(name=8, jointName="Bleg_BackLowerLeg")
+        # pyrosim.Send_Motor_Neuron(name=9, jointName="Fleg_FrontLowerLeg")
+        # pyrosim.Send_Motor_Neuron(name=10, jointName="Lleg_LeftLowerLeg")
+        # pyrosim.Send_Motor_Neuron(name=11, jointName="Rleg_RightLowerLeg")
 
-        pyrosim.Send_Motor_Neuron(name=8, jointName="Torso_Bleg")
+        pyrosim.Send_Motor_Neuron(name=9, jointName="Torso_Bleg")
         pyrosim.Send_Motor_Neuron(name=10, jointName="Torso_Fleg")
         pyrosim.Send_Motor_Neuron(name=11, jointName="Torso_Lleg")
         pyrosim.Send_Motor_Neuron(name=12, jointName="Torso_Rleg")
@@ -113,6 +128,8 @@ class SOLUTION:
             for currentColumn in range(c.numMotorNeurons):
                 pyrosim.Send_Synapse(sourceNeuronName=currentRow, targetNeuronName=currentColumn+9, weight=self.weights[currentRow][currentColumn])
         pyrosim.End()
+
+
 
 
 
