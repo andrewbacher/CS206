@@ -60,24 +60,24 @@ class SOLUTION:
         pyrosim.Send_Joint(name="Torso_Fleg", parent="Torso", child="Fleg", type="revolute", position="0 0.5 1", jointAxis="1 0 0")
         pyrosim.Send_Cube(name="Fleg", pos=[0, 0.5, 0],size=[0.2, 1, 0.2])  # stores the cube "Fleg" at specified location
 
-        pyrosim.Send_Joint(name="Torso_Lleg", parent="Torso", child="Lleg", type="revolute", position="-0.5 0 1",jointAxis="0 1 0")
+        pyrosim.Send_Joint(name="Torso_Lleg", parent="Torso", child="Lleg", type="revolute", position="-0.5 0 1",jointAxis="0 -1 0")
 
         pyrosim.Send_Cube(name="Lleg", pos=[-0.5, 0, 0],size=[1.0, 0.2, 0.2])
 
-        pyrosim.Send_Joint(name="Torso_Rleg", parent="Torso", child="Rleg", type="revolute", position="0.5 0 1",jointAxis="0 1 0")
+        pyrosim.Send_Joint(name="Torso_Rleg", parent="Torso", child="Rleg", type="revolute", position="0.5 0 1",jointAxis="0 -1 0")
 
         pyrosim.Send_Cube(name="Rleg", pos=[0.5, 0, 0], size=[1.0, 0.2, 0.2])
 
-        pyrosim.Send_Joint(name="Fleg_FrontLowerLeg", parent="Fleg", child="FrontLowerLeg", type="revolute", position="0 1 0",jointAxis="1 0 0")
+        pyrosim.Send_Joint(name="Fleg_FrontLowerLeg", parent="Fleg", child="FrontLowerLeg", type="revolute", position="0 1 0",jointAxis="1 0 0")#
         pyrosim.Send_Cube(name="FrontLowerLeg", pos=[0, 0, -0.5], size=[0.2, 0.2, 1])
 
         pyrosim.Send_Joint(name="Bleg_BackLowerLeg", parent="Bleg", child="BackLowerLeg", type="revolute",position="0 -1 0", jointAxis="1 0 0")
         pyrosim.Send_Cube(name="BackLowerLeg", pos=[0, 0, -0.5], size=[0.2, 0.2, 1])
 
-        pyrosim.Send_Joint(name="Lleg_LeftLowerLeg", parent="Lleg", child="LeftLowerLeg", type="revolute",position="-1 0 0", jointAxis="0 1 0")
+        pyrosim.Send_Joint(name="Lleg_LeftLowerLeg", parent="Lleg", child="LeftLowerLeg", type="revolute",position="-1 0 0", jointAxis="0 -1 0")#
         pyrosim.Send_Cube(name="LeftLowerLeg", pos=[0, 0, -0.5], size=[0.2, 0.2, 1])
 
-        pyrosim.Send_Joint(name="Rleg_RightLowerLeg", parent="Rleg", child="RightLowerLeg", type="revolute",position="1 0 0", jointAxis="0 1 0")
+        pyrosim.Send_Joint(name="Rleg_RightLowerLeg", parent="Rleg", child="RightLowerLeg", type="revolute",position="1 0 0", jointAxis="0 -1 0")
         pyrosim.Send_Cube(name="RightLowerLeg", pos=[0, 0, -0.5], size=[0.2, 0.2, 1])
         pyrosim.End()
 

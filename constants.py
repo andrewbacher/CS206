@@ -15,10 +15,10 @@ frontFreq = 2
 frontOff = 0
 backOff = 0
 
-numberOfGenerations = 5
+numberOfGenerations = 1
 
-populationSize = 5
+populationSize = 1
 
 numSensorNeurons = 9
 numMotorNeurons = 8
-motorJointRange = 0.35
+motorJointRange = 0.5

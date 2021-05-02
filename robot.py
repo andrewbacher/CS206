@@ -37,6 +37,8 @@ class ROBOT:
             if self.nn.Is_Motor_Neuron(neuronName):
                 jointName = self.nn.Get_Motor_Neurons_Joint(neuronName)
                 desiredAngle = (self.nn.Get_Value_Of(neuronName))*c.motorJointRange
+
+                #desiredAngle = 1
                 self.motors[jointName].Set_Value(self.robot, desiredAngle)
              #   print(neuronName+ ' '+jointName+' ')
               #  print(desiredAngle)
@@ -47,14 +49,21 @@ class ROBOT:
        # self.nn.Print()
 
     def Get_Fitness(self, solutionID):
-        #stateOfLinkZero = p.getLinkState(self.robot, 0)
+        stateOfLinkZero = p.getLinkState(self.robot, 4)
+        stateOfLinkOne =  p.getLinkState(self.robot, 5)
+        stateOfLinkTwo =  p.getLinkState(self.robot, 6)
+        stateOfLinkThree =  p.getLinkState(self.robot, 7)
         basePositionAndOrientation = p.getBasePositionAndOrientation(self.robot)
 
-        #positionOfLinkZero = stateOfLinkZero[0]
+
+        positionOfLinkZero = stateOfLinkZero[0]
+        positionOfLinkOne = stateOfLinkOne[0]
+        positionOfLinkTwo = stateOfLinkTwo[0]
+        positionOfLinkThree = stateOfLinkThree[0]
         basePosition = basePositionAndOrientation[0]
 
         #print(positionOfLinkZero)
-        #xCoordinateOfLinkZero = positionOfLinkZero[0]
+        xCoordinateOfLinkZero = positionOfLinkZero[2] + positionOfLinkOne[2]+positionOfLinkTwo[2]+positionOfLinkThree[2]
         xPosition = basePosition[2]
        # print(xCoordinateOfLinkZero)
 
