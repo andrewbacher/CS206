@@ -50,21 +50,23 @@ class SOLUTION:
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")  # names the world box
+        pyrosim.Send_Cube(name="Box", pos=[0, 0, 1.5], size=[25, 4.5, 3])
         pyrosim.End()  # close sdf file
 
     def Create_Body(self):
         pyrosim.Start_URDF("body.urdf")  # Unified Robot Description Format file stores description of robot body
-        pyrosim.Send_Cube(name="Torso", pos=[0, 0, 1],size=[1, 1, 1])  # stores the cube "Torso" at specified location
-        pyrosim.Send_Joint(name="Torso_Bleg", parent="Torso", child="Bleg", type="revolute", position="0 -0.5 1",jointAxis="1 0 0")
+
+        pyrosim.Send_Cube(name="Torso", pos=[0, 0, 4],size=[1, 1, 1])  # stores the cube "Torso" at specified location
+        pyrosim.Send_Joint(name="Torso_Bleg", parent="Torso", child="Bleg", type="revolute", position="0 -0.5 4",jointAxis="1 0 0")
         pyrosim.Send_Cube(name="Bleg", pos=[0, -0.5, 0],size=[0.2, 1, 0.2])  # stores the cube "Bleg" at specified location
-        pyrosim.Send_Joint(name="Torso_Fleg", parent="Torso", child="Fleg", type="revolute", position="0 0.5 1", jointAxis="1 0 0")
+        pyrosim.Send_Joint(name="Torso_Fleg", parent="Torso", child="Fleg", type="revolute", position="0 0.5 4", jointAxis="-1 0 0")
         pyrosim.Send_Cube(name="Fleg", pos=[0, 0.5, 0],size=[0.2, 1, 0.2])  # stores the cube "Fleg" at specified location
 
-        pyrosim.Send_Joint(name="Torso_Lleg", parent="Torso", child="Lleg", type="revolute", position="-0.5 0 1",jointAxis="0 -1 0")
+        pyrosim.Send_Joint(name="Torso_Lleg", parent="Torso", child="Lleg", type="revolute", position="-0.5 0 4",jointAxis="0 -1 0")
 
         pyrosim.Send_Cube(name="Lleg", pos=[-0.5, 0, 0],size=[1.0, 0.2, 0.2])
 
-        pyrosim.Send_Joint(name="Torso_Rleg", parent="Torso", child="Rleg", type="revolute", position="0.5 0 1",jointAxis="0 -1 0")
+        pyrosim.Send_Joint(name="Torso_Rleg", parent="Torso", child="Rleg", type="revolute", position="0.5 0 4",jointAxis="0 1 0")
 
         pyrosim.Send_Cube(name="Rleg", pos=[0.5, 0, 0], size=[1.0, 0.2, 0.2])
 

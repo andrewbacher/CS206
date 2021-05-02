@@ -64,7 +64,7 @@ class ROBOT:
 
         #print(positionOfLinkZero)
         xCoordinateOfLinkZero = positionOfLinkZero[2] + positionOfLinkOne[2]+positionOfLinkTwo[2]+positionOfLinkThree[2]
-        xPosition = basePosition[2]
+        xPosition = basePosition[0]
        # print(xCoordinateOfLinkZero)
 
 
