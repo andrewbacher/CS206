@@ -108,8 +108,8 @@ class PARALLEL_HILL_CLIMBER:
                 bestB = key
         print(self.matrix)
         print(self.matrixB)
-        numpy.savetxt('test.txt', self.matrix)
-        numpy.savetxt('testB.txt', self.matrixB)
+        numpy.save('a.npy', self.matrix)
+        numpy.save('b.npy', self.matrixB)
         print("Best Fitness A: "+str(self.parents[best].fitness))
         print("Best Fitness B: " + str(self.parentsB[bestB].fitness))
         #self.parentsB[bestB].Start_Simulation("GUI","B")

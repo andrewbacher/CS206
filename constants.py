@@ -17,7 +17,7 @@ backOff = 0
 
 numberOfGenerations = 5
 
-populationSize = 10
+populationSize = 5
 
 numSensorNeurons = 9
 numMotorNeurons = 8
