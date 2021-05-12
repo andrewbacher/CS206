@@ -11,10 +11,13 @@ class SOLUTION:
         self.weights = numpy.random.rand(c.numSensorNeurons,c.numMotorNeurons) *numpy.random.rand()
         self.weights * 2 - 1
         self.myID = id
+        self.test = "A"
+        #print(self.test)
 
-    def Start_Simulation(self,directOrGUI):
+    def Start_Simulation(self,directOrGUI,test):
+        self.test = test
         self.Create_World()
-        self.Create_Body()
+        self.Create_Body(test)
         self.Create_Brain()
         call = "start /B py simulate.py " + directOrGUI + " " + str(self.myID)
        # print(call)
@@ -50,37 +53,73 @@ class SOLUTION:
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")  # names the world box
-        pyrosim.Send_Cube(name="Box", pos=[0, 0, 1.5], size=[25, 4.5, 3])
+        if(self.test =="A"):
+            pyrosim.Send_Cube(name="Box", pos=[0, 0, 1.5], size=[25, 4.5, 3])
+        else:
+            pyrosim.Send_Cube(name="Box", pos=[0, 0, 1.5], size=[25, 5.5, 3])
         pyrosim.End()  # close sdf file
 
-    def Create_Body(self):
+    def Create_Body(self,test):
         pyrosim.Start_URDF("body.urdf")  # Unified Robot Description Format file stores description of robot body
+        self.test = test
+        if (self.test == "A"):
+            print("AAAA")
+            pyrosim.Send_Cube(name="Torso", pos=[0, 0, 4],size=[1, 1, 1])  # stores the cube "Torso" at specified location
+        if (self.test == "B"):
+            pyrosim.Send_Cube(name="Torso", pos=[0, 0, 4.5], size=[1, 1, 1])  # stores the cube "Torso" at specified location
 
-        pyrosim.Send_Cube(name="Torso", pos=[0, 0, 4],size=[1, 1, 1])  # stores the cube "Torso" at specified location
-        pyrosim.Send_Joint(name="Torso_Bleg", parent="Torso", child="Bleg", type="revolute", position="0 -0.5 4",jointAxis="1 0 0")
+        if (self.test == "A"):
+            pyrosim.Send_Joint(name="Torso_Bleg", parent="Torso", child="Bleg", type="revolute", position="0 -0.5 4",jointAxis="1 0 0")
+        if (self.test == "B"):
+            pyrosim.Send_Joint(name="Torso_Bleg", parent="Torso", child="Bleg", type="revolute", position="0 -0.5 4.5",jointAxis="1 0 0")
+
         pyrosim.Send_Cube(name="Bleg", pos=[0, -0.5, 0],size=[0.2, 1, 0.2])  # stores the cube "Bleg" at specified location
-        pyrosim.Send_Joint(name="Torso_Fleg", parent="Torso", child="Fleg", type="revolute", position="0 0.5 4", jointAxis="-1 0 0")
+
+        if (self.test == "A"):
+            pyrosim.Send_Joint(name="Torso_Fleg", parent="Torso", child="Fleg", type="revolute", position="0 0.5 4", jointAxis="-1 0 0")
+        if (self.test == "B"):
+            pyrosim.Send_Joint(name="Torso_Fleg", parent="Torso", child="Fleg", type="revolute", position="0 0.5 4.5",jointAxis="-1 0 0")
+
         pyrosim.Send_Cube(name="Fleg", pos=[0, 0.5, 0],size=[0.2, 1, 0.2])  # stores the cube "Fleg" at specified location
 
-        pyrosim.Send_Joint(name="Torso_Lleg", parent="Torso", child="Lleg", type="revolute", position="-0.5 0 4",jointAxis="0 -1 0")
+        if (self.test == "A"):
+            pyrosim.Send_Joint(name="Torso_Lleg", parent="Torso", child="Lleg", type="revolute", position="-0.5 0 4",jointAxis="0 -1 0")
+
+        if (self.test == "B"):
+            pyrosim.Send_Joint(name="Torso_Lleg", parent="Torso", child="Lleg", type="revolute", position="-0.5 0 4.5",jointAxis="0 -1 0")
 
         pyrosim.Send_Cube(name="Lleg", pos=[-0.5, 0, 0],size=[1.0, 0.2, 0.2])
 
-        pyrosim.Send_Joint(name="Torso_Rleg", parent="Torso", child="Rleg", type="revolute", position="0.5 0 4",jointAxis="0 1 0")
+        if (self.test == "A"):
+            pyrosim.Send_Joint(name="Torso_Rleg", parent="Torso", child="Rleg", type="revolute", position="0.5 0 4",jointAxis="0 1 0")
+        if (self.test == "B"):
+            pyrosim.Send_Joint(name="Torso_Rleg", parent="Torso", child="Rleg", type="revolute", position="0.5 0 4.5",jointAxis="0 1 0")
 
         pyrosim.Send_Cube(name="Rleg", pos=[0.5, 0, 0], size=[1.0, 0.2, 0.2])
 
         pyrosim.Send_Joint(name="Fleg_FrontLowerLeg", parent="Fleg", child="FrontLowerLeg", type="revolute", position="0 1 0",jointAxis="1 0 0")#
-        pyrosim.Send_Cube(name="FrontLowerLeg", pos=[0, 0, -0.5], size=[0.2, 0.2, 1])
+        if (self.test == "A"):
+            pyrosim.Send_Cube(name="FrontLowerLeg", pos=[0, 0, -0.5], size=[0.2, 0.2, 1])
+        if (self.test == "B"):
+            pyrosim.Send_Cube(name="FrontLowerLeg", pos=[0, 0, -0.75], size=[0.2, 0.2, 1.5])
 
         pyrosim.Send_Joint(name="Bleg_BackLowerLeg", parent="Bleg", child="BackLowerLeg", type="revolute",position="0 -1 0", jointAxis="1 0 0")
-        pyrosim.Send_Cube(name="BackLowerLeg", pos=[0, 0, -0.5], size=[0.2, 0.2, 1])
+        if (self.test == "A"):
+            pyrosim.Send_Cube(name="BackLowerLeg", pos=[0, 0, -0.5], size=[0.2, 0.2, 1])
+        if (self.test == "B"):
+            pyrosim.Send_Cube(name="BackLowerLeg", pos=[0, 0, -0.75], size=[0.2, 0.2, 1.5])
 
         pyrosim.Send_Joint(name="Lleg_LeftLowerLeg", parent="Lleg", child="LeftLowerLeg", type="revolute",position="-1 0 0", jointAxis="0 -1 0")#
-        pyrosim.Send_Cube(name="LeftLowerLeg", pos=[0, 0, -0.5], size=[0.2, 0.2, 1])
+        if (self.test == "A"):
+            pyrosim.Send_Cube(name="LeftLowerLeg", pos=[0, 0, -0.5], size=[0.2, 0.2, 1])
+        if (self.test == "B"):
+            pyrosim.Send_Cube(name="LeftLowerLeg", pos=[0, 0, -0.75], size=[0.2, 0.2, 1.5])
 
         pyrosim.Send_Joint(name="Rleg_RightLowerLeg", parent="Rleg", child="RightLowerLeg", type="revolute",position="1 0 0", jointAxis="0 -1 0")
-        pyrosim.Send_Cube(name="RightLowerLeg", pos=[0, 0, -0.5], size=[0.2, 0.2, 1])
+        if (self.test == "A"):
+            pyrosim.Send_Cube(name="RightLowerLeg", pos=[0, 0, -0.5], size=[0.2, 0.2, 1])
+        if(self.test == "B"):
+            pyrosim.Send_Cube(name="RightLowerLeg", pos=[0, 0, -0.75], size=[0.2, 0.2, 1.5])
         pyrosim.End()
 
 
